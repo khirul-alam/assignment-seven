@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Arif Ahmed",
+    "picture": "https://i.pravatar.cc/150?u=arif",
+    "email": "arif.ahmed@example.com",
+    "days_since_contact": 20,
+    "status": "overdue",
+    "tags": ["School", "Best Friend"],
+    "bio": "Childhood friend from Faridpur. We love playing cricket together.",
+    "goal": 14,
+    "next_due_date": "2026-04-10"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Khan",
+    "picture": "https://i.pravatar.cc/150?u=sarah",
+    "email": "sarah.k@example.com",
+    "days_since_contact": 3,
+    "status": "on-track",
+    "tags": ["University", "Study Group"],
+    "bio": "Brilliant programmer and a great mentor for React projects.",
+    "goal": 7,
+    "next_due_date": "2026-04-18"
+  },
+  {
+    "id": 3,
+    "name": "Tanvir Hasan",
+    "picture": "https://i.pravatar.cc/150?u=tanvir",
+    "email": "tanvir.h@example.com",
+    "days_since_contact": 12,
+    "status": "almost due",
+    "tags": ["Work", "Tech"],
+    "bio": "Colleague from the previous internship. Very helpful person.",
+    "goal": 15,
+    "next_due_date": "2026-04-16"
+  },
+  {
+    "id": 4,
+    "name": "Nila Islam",
+    "picture": "https://i.pravatar.cc/150?u=nila",
+    "email": "nila.islam@example.com",
+    "days_since_contact": 45,
+    "status": "overdue",
+    "tags": ["Neighborhood", "Travel"],
+    "bio": "Loves exploring mountains. We traveled to Sylhet together.",
+    "goal": 30,
+    "next_due_date": "2026-03-15"
+  },
+  {
+    "id": 5,
+    "name": "Rahul Das",
+    "picture": "https://i.pravatar.cc/150?u=rahul",
+    "email": "rahul.das@example.com",
+    "days_since_contact": 1,
+    "status": "on-track",
+    "tags": ["College", "Gaming"],
+    "bio": "Pro gamer and a funny guy. We talk almost every day.",
+    "goal": 5,
+    "next_due_date": "2026-04-18"
+  },
+  {
+    "id": 6,
+    "name": "Maliha Zaman",
+    "picture": "https://i.pravatar.cc/150?u=maliha",
+    "email": "maliha.z@example.com",
+    "days_since_contact": 8,
+    "status": "almost due",
+    "tags": ["Art", "Photography"],
+    "bio": "An amazing artist. She helps me with my landscape drawings.",
+    "goal": 10,
+    "next_due_date": "2026-04-16"
+  },
+  {
+    "id": 7,
+    "name": "Siam Bakshi",
+    "picture": "https://i.pravatar.cc/150?u=siam",
+    "email": "siam.b@example.com",
+    "days_since_contact": 60,
+    "status": "overdue",
+    "tags": ["Distant Relative", "Family"],
+    "bio": "My cousin who lives in Dhaka. Need to call him soon.",
+    "goal": 30,
+    "next_due_date": "2026-03-01"
+  },
+  {
+    "id": 8,
+    "name": "Esha Roy",
+    "picture": "https://i.pravatar.cc/150?u=esha",
+    "email": "esha.roy@example.com",
+    "days_since_contact": 2,
+    "status": "on-track",
+    "tags": ["Music", "K-pop"],
+    "bio": "Huge BTS fan! We always share the latest music updates.",
+    "goal": 7,
+    "next_due_date": "2026-04-19"
+  },
+  {
+    "id": 9,
+    "name": "Zayan Malik",
+    "picture": "https://i.pravatar.cc/150?u=zayan",
+    "email": "zayan.m@example.com",
+    "days_since_contact": 25,
+    "status": "overdue",
+    "tags": ["Gym", "Fitness"],
+    "bio": "Fitness enthusiast. We used to go to the same gym.",
+    "goal": 14,
+    "next_due_date": "2026-04-03"
+  },
+  {
+    "id": 10,
+    "name": "Fariha Tabassum",
+    "picture": "https://i.pravatar.cc/150?u=fariha",
+    "email": "fariha.t@example.com",
+    "days_since_contact": 5,
+    "status": "on-track",
+    "tags": ["Baking", "Friend"],
+    "bio": "Makes the best chocolate chips. A very kind soul.",
+    "goal": 10,
+    "next_due_date": "2026-04-20"
+  }
+]
