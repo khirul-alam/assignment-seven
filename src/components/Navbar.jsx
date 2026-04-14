@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/", icon: <Home size={18} /> },
-    { name: "Timeline", href: "/timeline", icon: <History size={18} /> },
+    { name: "Timeline", href: "/Timeline", icon: <History size={18} /> },
     { name: "Stats", href: "/stats", icon: <PieChart size={18} /> },
   ];
 
@@ -60,7 +60,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ৪. মোবাইল ড্রপডাউন মেনু (মোবাইলে ক্লিক করলে নিচে নামবে) */}
+      {/* ৪. মোবাইল ড্রপডাউন মেনু  */}
       <div 
         className={`md:hidden transition-all duration-300 ease-in-out ${
           isOpen ? "block opacity-100" : "hidden opacity-0"
