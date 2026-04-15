@@ -7,12 +7,13 @@ const StatsPage = () => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
 
+  //---------------------
   useEffect(() => {
-    // localStorage থেকে টাইমলাইন ডেটা নেওয়া
+  // Check if window is defined (browser check)
+  if (typeof window !== "undefined") {
     const timeline = JSON.parse(localStorage.getItem("timeline") || "[]");
     setTotal(timeline.length);
     
-    // টাইপ অনুযায়ী ডেটা ফিল্টার এবং কাউন্ট
     const counts = timeline.reduce((acc, curr) => {
       acc[curr.type] = (acc[curr.type] || 0) + 1;
       return acc;
@@ -24,7 +25,30 @@ const StatsPage = () => {
     }));
 
     setData(chartData);
-  }, []);
+  }
+}, []);
+
+  //-------------------
+
+
+  // useEffect(() => {
+  //   // localStorage থেকে টাইমলাইন ডেটা নেওয়া
+  //   const timeline = JSON.parse(localStorage.getItem("timeline") || "[]");
+  //   setTotal(timeline.length);
+    
+  //   // টাইপ অনুযায়ী ডেটা ফিল্টার এবং কাউন্ট
+  //   const counts = timeline.reduce((acc, curr) => {
+  //     acc[curr.type] = (acc[curr.type] || 0) + 1;
+  //     return acc;
+  //   }, {});
+
+  //   const chartData = Object.keys(counts).map(key => ({
+  //     name: key,
+  //     value: counts[key]
+  //   }));
+
+  //   setData(chartData);
+  // }, []);
 
   // ফিগমা ডিজাইন অনুযায়ী কালার প্যালেট
   const COLORS = ["#166534", "#1e40af", "#6b21a8", "#9a3412"];

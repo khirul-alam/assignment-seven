@@ -6,10 +6,20 @@ const TimelinePage = () => {
   const [timeline, setTimeline] = useState([]);
   const [filter, setFilter] = useState("All");
 
+  //-----------
   useEffect(() => {
+  if (typeof window !== "undefined") {
     const savedTimeline = JSON.parse(localStorage.getItem("timeline") || "[]");
     setTimeline(savedTimeline);
-  }, []);
+  }
+}, []);
+
+  //----------
+
+  // useEffect(() => {
+  //   const savedTimeline = JSON.parse(localStorage.getItem("timeline") || "[]");
+  //   setTimeline(savedTimeline);
+  // }, []);
 
   const filteredTimeline = filter === "All" 
     ? timeline 

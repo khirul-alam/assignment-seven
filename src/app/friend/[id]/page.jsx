@@ -15,7 +15,29 @@ import {
   Trash2,
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
-import Image from 'next/image';
+import Image from "next/image";
+
+//----------
+const handleCheckIn = (type) => {
+  if (typeof window === "undefined") return; // Safety check
+
+  const newEntry = {
+    id: Date.now(),
+    friendName: friend.name,
+    type: type,
+    date: new Date().toLocaleDateString(),
+  };
+
+  const existingTimeline = JSON.parse(localStorage.getItem("timeline") || "[]");
+  localStorage.setItem(
+    "timeline",
+    JSON.stringify([newEntry, ...existingTimeline]),
+  );
+
+  toast.success(`${type} with ${friend.name} logged!`);
+};
+
+//-------
 
 const FriendDetails = () => {
   const { id } = useParams();
@@ -118,27 +140,37 @@ const FriendDetails = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm ">
               <Clock className="text-blue-500 mb-2" />
-              <p className="text-2xl font-bold text-black">{friend.days_since_contact}</p>
+              <p className="text-2xl font-bold text-black">
+                {friend.days_since_contact}
+              </p>
               <p className="text-[16px] text-gray-500 uppercase pt-2">
                 Days Since Contact
               </p>
             </div>
             <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
               <Target className="text-purple-500 mb-2" />
-              <p className="text-2xl font-bold text-black">{friend.goal} Days</p>
+              <p className="text-2xl font-bold text-black">
+                {friend.goal} Days
+              </p>
               <p className="text-[16px] pt-2 text-gray-500 uppercase">Goal</p>
             </div>
             <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
               <Calendar className="text-green-500 mb-2" />
-              <p className="text-2xl font-bold text-black">{friend.next_due_date}</p>
-              <p className="text-[16px] pt-2 text-gray-500 uppercase">Next Due Date</p>
+              <p className="text-2xl font-bold text-black">
+                {friend.next_due_date}
+              </p>
+              <p className="text-[16px] pt-2 text-gray-500 uppercase">
+                Next Due Date
+              </p>
             </div>
           </div>
 
           {/* ২. Relationship Goal Card */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex justify-between items-center">
             <div>
-              <h2 className="text-[30px] font-bold text-black">Relationship Goal</h2>
+              <h2 className="text-[30px] font-bold text-black">
+                Relationship Goal
+              </h2>
               <p className=" text-gray-500 pt-2 text-2xl">
                 You aim to contact {friend.name} every {friend.goal} days.
               </p>
@@ -151,7 +183,7 @@ const FriendDetails = () => {
           {/* ৩. Quick Check-In Card (Interaction Buttons) */}
           <div className="bg-green-800 p-8 rounded-3xl text-white">
             <h3 className="text-xl font-bold mb-2">Quick Check-In</h3>
-            
+
             <div className="grid grid-cols-3 gap-4 pt-4">
               <button
                 onClick={() => handleCheckIn("Call")}
