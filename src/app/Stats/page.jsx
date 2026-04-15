@@ -1,8 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
-import { Activity, Phone, MessageSquare, Video } from "lucide-react";
+import { Activity } from "lucide-react";
 
 const StatsPage = () => {
   const [data, setData] = useState([]);
@@ -13,7 +12,7 @@ const StatsPage = () => {
     const timeline = JSON.parse(localStorage.getItem("timeline") || "[]");
     setTotal(timeline.length);
     
-    // টাইপ অনুযায়ী ডেটা ফিল্টার এবং কাউন্ট (Requirement C1)
+    // টাইপ অনুযায়ী ডেটা ফিল্টার এবং কাউন্ট
     const counts = timeline.reduce((acc, curr) => {
       acc[curr.type] = (acc[curr.type] || 0) + 1;
       return acc;
@@ -31,78 +30,104 @@ const StatsPage = () => {
   const COLORS = ["#166534", "#1e40af", "#6b21a8", "#9a3412"];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold text-gray-900">Friendship Analytics</h1>
-        <p className="text-gray-500">Visualizing your connection history</p>
-      </div>
-
-      {data.length > 0 ? (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    /* পুরো পেজটিকে gray background এবং full height দেওয়া হয়েছে */
+    <div className="min-h-screen bg-gray-50 py-12">
+      
+      {/* Container class যা কন্টেন্টকে মাঝখানে রাখবে এবং max-width নিয়ন্ত্রণ করবে */}
+      <div className="container mx-auto px-4 max-w-6xl">
+        
+        <div className="mb-10">
+          <h1 className="text-3xl font-black text-gray-900">Friendship Analytics</h1>
           
-          {/* পাই চার্ট সেকশন (Requirement C1) */}
-          <div className="lg:col-span-2 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm h-[450px]">
-            <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
-              <Activity className="text-green-700" size={20} /> Interaction Distribution
-            </h3>
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={data}
-                  cx="50%"
-                  cy="45%"
-                  innerRadius={70}
-                  outerRadius={100}
-                  paddingAngle={8}
-                  dataKey="value"
-                >
-                  {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} strokeWidth={0} />
-                  ))}
-                </Pie>
-                <Tooltip 
-                  contentStyle={{ borderRadius: '15px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
-                />
-                <Legend verticalAlign="bottom" height={36}/>
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
+        </div>
 
-          {/* ডান পাশের সামারি কার্ডস */}
-          <div className="space-y-4">
-            <div className="bg-green-800 text-white p-6 rounded-3xl shadow-lg shadow-green-100">
-              <p className="text-green-200 text-sm font-medium">Total Interactions</p>
-              <h2 className="text-4xl font-bold mt-1">{total}</h2>
+        {data.length > 0 ? (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            {/* পাই চার্ট সেকশন (৮ কলাম জুড়ে থাকবে) */}
+            <div className="lg:col-span-8 bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm h-[500px]">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-lg font-bold flex items-center gap-2 text-gray-800">
+                  <Activity className="text-green-700" size={20} /> By Interaction Type
+                </h3>
+                <span className="text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full uppercase">
+                  Live Data
+                </span>
+              </div>
+              
+              <ResponsiveContainer width="100%" height="300">
+                <PieChart>
+                  <Pie
+                    data={data}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={80}
+                    outerRadius={120}
+                    paddingAngle={8}
+                    dataKey="value"
+                    stroke="none"
+                  >
+                    {data.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip 
+                    contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
+                  />
+                  <Legend verticalAlign="bottom" height={36} iconType="circle"/>
+                </PieChart>
+              </ResponsiveContainer>
             </div>
 
-            <div className="grid grid-cols-1 gap-4">
-              {data.map((item, index) => (
-                <div key={item.name} className="bg-white p-5 rounded-2xl border border-gray-100 flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-8 rounded-full" style={{backgroundColor: COLORS[index % COLORS.length]}}></div>
-                    <div>
-                      <p className="font-bold text-gray-800">{item.name}s</p>
-                      <p className="text-xs text-gray-400">Logged History</p>
-                    </div>
-                  </div>
-                  <span className="text-2xl font-black text-gray-200">{item.value}</span>
+            {/* ডান পাশের সামারি কার্ডস (৪ কলাম জুড়ে থাকবে) */}
+            <div className="lg:col-span-4 space-y-4">
+              <div className="bg-green-800 text-white p-8 rounded-[32px] shadow-xl shadow-green-100">
+                <p className="text-green-200 text-sm font-medium uppercase tracking-wider">Total Interactions</p>
+                <h2 className="text-5xl font-black mt-2">{total}</h2>
+                <div className="mt-4 pt-4 border-t border-green-700">
+                  
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
-        </div>
-      ) : (
-        <div className="text-center py-24 bg-gray-50 rounded-[40px] border-2 border-dashed border-gray-200">
-          <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-            <Activity className="text-gray-300" size={32} />
+              <div className="grid grid-cols-1 gap-4">
+                {data.map((item, index) => (
+                  <div key={item.name} className="bg-white p-6 rounded-2xl border border-gray-100 flex justify-between items-center group hover:border-green-200 transition-all">
+                    <div className="flex items-center gap-4">
+                      <div 
+                        className="w-3 h-3 rounded-full shadow-sm" 
+                        style={{backgroundColor: COLORS[index % COLORS.length]}}
+                      ></div>
+                      <div>
+                        <p className="font-bold text-gray-900">{item.name}s</p>
+                        
+                      </div>
+                    </div>
+                    <span className="text-3xl font-black text-gray-100 group-hover:text-green-800 transition-colors">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
-          <h2 className="text-xl font-bold text-gray-800">No Stats Available Yet</h2>
-          <p className="text-gray-400 max-w-xs mx-auto mt-2">
-            Start logging interactions from the friend details page to see your analytics!
-          </p>
+        ) : (
+          /* Empty State */
+          <div className="text-center py-32 bg-white rounded-[40px] border-2 border-dashed border-gray-100 shadow-sm">
+            <div className="bg-gray-50 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Activity className="text-gray-200" size={40} />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-800">No Stats Available Yet</h2>
+            <p className="text-gray-400 max-w-sm mx-auto mt-3">
+              We need some data to generate insights. Go to a friend's details page and log some calls or texts!
+            </p>
+          </div>
+        )}
+
+        <div className="mt-12 text-center">
+            <p className="text-gray-300 text-[20px] font-medium">Stats updated automatically based on your timeline.</p>
         </div>
-      )}
+      </div>
     </div>
   );
 };

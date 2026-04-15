@@ -7,17 +7,14 @@ const TimelinePage = () => {
   const [filter, setFilter] = useState("All");
 
   useEffect(() => {
-    // localStorage থেকে ডেটা নিয়ে আসা
     const savedTimeline = JSON.parse(localStorage.getItem("timeline") || "[]");
     setTimeline(savedTimeline);
   }, []);
 
-  // ফিল্টার লজিক 
   const filteredTimeline = filter === "All" 
     ? timeline 
     : timeline.filter(item => item.type === filter);
 
-  // টাইপ অনুযায়ী আইকন সেট করা
   const getIcon = (type) => {
     switch (type) {
       case "Call": return <Phone size={18} className="text-green-600" />;
@@ -28,55 +25,80 @@ const TimelinePage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Timeline</h1>
-          <p className="text-gray-500">History of your recent interactions</p>
+    /* পুরো পেজটিকে gray background এবং full height দেওয়া হয়েছে */
+    <div className="min-h-screen bg-gray-50 py-12">
+      
+      {/* Container class যা কন্টেন্টকে মাঝখানে রাখবে */}
+      <div className="container mx-auto px-4 max-w-5xl">
+        
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+          <div>
+            <h1 className="text-3xl font-black text-gray-900">Timeline</h1>
+            
+          </div>
+
+          {/* ফিল্টার বাটন */}
+          <div className="flex items-center gap-2 bg-white p-1.5 rounded-2xl shadow-sm border border-gray-100">
+            {["All", "Call", "Text", "Video"].map((item) => (
+              <button
+                key={item}
+                onClick={() => setFilter(item)}
+                className={`px-5 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${
+                  filter === item 
+                    ? "bg-green-800 text-white shadow-md shadow-green-100" 
+                    : "text-gray-500 hover:bg-gray-50"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* ফিল্টার বাটন  */}
-        <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-xl">
-          {["All", "Call", "Text", "Video"].map((item) => (
-            <button
-              key={item}
-              onClick={() => setFilter(item)}
-              className={`px-4 py-1.5 rounded-lg text-sm font-medium transition ${
-                filter === item ? "bg-white text-green-700 shadow-sm" : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {filteredTimeline.length === 0 ? (
-        <div className="text-center py-20 bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200">
-          <p className="text-gray-400 font-medium">No interactions found yet.</p>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {filteredTimeline.map((entry) => (
-            <div key={entry.id} className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex items-center justify-between hover:border-green-200 transition">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-gray-50 rounded-xl">
-                  {getIcon(entry.type)}
+        {filteredTimeline.length === 0 ? (
+          <div className="text-center py-32 bg-white rounded-[40px] border-2 border-dashed border-gray-200 shadow-sm">
+            <div className="bg-gray-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+               <Calendar className="text-gray-300" size={32} />
+            </div>
+            <h2 className="text-xl font-bold text-gray-800">No history found</h2>
+            <p className="text-gray-400 mt-2">Start a conversation to see it in your timeline!</p>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {filteredTimeline.map((entry) => (
+              <div 
+                key={entry.id} 
+                className="bg-white border border-gray-100 p-6 rounded-[24px] shadow-sm flex items-center justify-between hover:shadow-md hover:border-green-100 transition-all duration-300 group"
+              >
+                <div className="flex items-center gap-5">
+                  <div className="p-4 bg-gray-50 rounded-2xl group-hover:bg-green-50 transition-colors">
+                    {getIcon(entry.type)}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">
+                      {entry.type} with <span className="text-green-800">{entry.friendName}</span>
+                    </h3>
+                    <p className="text-sm text-gray-400 flex items-center gap-1.5 mt-1">
+                      <Calendar size={14} /> {entry.date}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-gray-800">{entry.type} with {entry.friendName}</h3>
-                  <p className="text-sm text-gray-500 flex items-center gap-1">
-                    <Calendar size={14} /> {entry.date}
-                  </p>
+                
+                <div className="hidden sm:flex flex-col items-end">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-green-700 bg-green-50 px-3 py-1 rounded-full">
+                    Completed
+                  </span>
                 </div>
               </div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 bg-gray-50 px-2 py-1 rounded">
-                Completed
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
+        )}
+        
+        {/* Footer spacing */}
+        <div className="mt-20 text-center">
+            <p className="text-gray-300 text-2xl">End of timeline</p>
         </div>
-      )}
+      </div>
     </div>
   );
 };

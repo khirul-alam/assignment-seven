@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="flex justify-center gap-1.5 pt-1.5">
           <FaInstagramSquare
             size={24}
-            className="text-pink-600 hover:text-pink-800 transition"
+           
           />
 
           <FaGithub size={24} />
@@ -30,8 +30,8 @@ const Footer = () => {
           <FaLinkedin size={24} />
         </div>
       </div>
-      <div className="divider container mx-auto"></div>
-      <div className="flex justify-between container mx-auto ">
+      <div className="divider"></div>
+      <div className="flex justify-between ml-6 mr-3">
         <div className="">
             <p>© 2026 KeenKeeper. All rights reserved.</p>
         </div>
