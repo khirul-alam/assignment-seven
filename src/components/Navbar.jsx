@@ -22,7 +22,7 @@ const Navbar = () => {
           {/* ১. লোগো (সব ডিভাইসেই বামে থাকবে) */}
           <div className="flex items-center gap-2">
             
-            <span className="text-xl font-bold text-gray-800 tracking-tight">
+            <span className="text-3xl font-bold text-gray-800 tracking-tight">
               KeenKeeper
             </span>
           </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-3 py-2 text-xl font-bold transition-all duration-200 ${
                     isActive
                       ? "text-green-700 border-b-2 border-green-700"
                       : "text-gray-500 hover:text-green-600"

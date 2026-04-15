@@ -84,11 +84,7 @@ const TimelinePage = () => {
                   </div>
                 </div>
                 
-                <div className="hidden sm:flex flex-col items-end">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-green-700 bg-green-50 px-3 py-1 rounded-full">
-                    Completed
-                  </span>
-                </div>
+                
               </div>
             ))}
           </div>

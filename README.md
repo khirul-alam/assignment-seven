@@ -1,10 +1,10 @@
-# 🌿 KeenKeeper
+# KeenKeeper
 
 **KeenKeeper** is a personal relationship management tool designed to help you nurture and maintain meaningful connections. In a fast-paced world, it’s easy to lose track of when you last spoke to a friend or mentor—KeenKeeper acts as your personal "shelf" for relationships, reminding you to tend to the bonds that matter most.
 
 ## Technologies Used
 
-* **Framework:**Next.js
+* **Framework:** Next.js
 * **Styling:** Tailwind CSS
 * **UI Components:** DaisyUI & Lucide React Icons
 * **Charts & Analytics:** Recharts
