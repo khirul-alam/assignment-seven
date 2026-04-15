@@ -11,8 +11,8 @@ const Banner = () => {
   ];
 
   return (
-    <section className="py-12 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="py-12 md:py-20 bg-white ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center container mx-auto">
         
         {/* টাইটেল ও সাবটাইটেল */}
         <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
@@ -29,7 +29,7 @@ const Banner = () => {
         </button>
 
         {/* ৪টি সামারি কার্ড (Summary Cards) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 container mx-auto">
           {stats.map((stat, index) => (
             <div 
               key={index} 
