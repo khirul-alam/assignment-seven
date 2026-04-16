@@ -8,7 +8,7 @@ const FriendsGrid = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // লোডিং অ্যানিমেশন দেখানোর জন্য সামান্য ডিলে 
+    // লোডিং অ্যানিমেশন দেখানোর জন্য ডিলে 
     const timer = setTimeout(() => {
       setFriends(friendsData);
       setLoading(false);

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Clock, Mail } from "lucide-react";
 
 const FriendCard = ({ friend }) => {
-  // স্ট্যাটাস অনুযায়ী কালার সেট করার লজিক
+  // স্ট্যাটাস অনুযায়ী কালার সেট করা
   const statusColors = {
     overdue: "bg-red-100 text-red-700 border-red-200",
     "almost due": "bg-orange-100 text-orange-700 border-orange-200",
@@ -34,7 +34,7 @@ const FriendCard = ({ friend }) => {
           <span>{friend.days_since_contact} days ago</span>
         </div>
 
-        {/* ট্যাগস (Tags) */}
+        {/* (Tags) */}
         <div className="flex flex-wrap justify-center gap-2 mb-4">
           {friend.tags.map((tag, index) => (
             <span key={index} className="text-[10px] uppercase font-bold tracking-wider text-gray-400 border border-gray-200 px-2 py-0.5 rounded">
@@ -43,7 +43,7 @@ const FriendCard = ({ friend }) => {
           ))}
         </div>
 
-        {/* স্ট্যাটাস ব্যাজ (Status Badge) */}
+        {/*(Status Badge) */}
         <div className={`mt-auto w-full py-2 rounded-xl text-xs font-bold uppercase tracking-widest border ${statusColors[friend.status]}`}>
           {friend.status}
         </div>

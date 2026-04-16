@@ -7,10 +7,8 @@ const StatsPage = () => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
 
-  //---------------------
-  useEffect(() => {
-  // Check if window is defined (browser check)
-  if (typeof window !== "undefined") {
+   useEffect(() => {
+    if (typeof window !== "undefined") {
     const timeline = JSON.parse(localStorage.getItem("timeline") || "[]");
     setTotal(timeline.length);
     
@@ -28,36 +26,15 @@ const StatsPage = () => {
   }
 }, []);
 
-  //-------------------
-
-
-  // useEffect(() => {
-  //   // localStorage থেকে টাইমলাইন ডেটা নেওয়া
-  //   const timeline = JSON.parse(localStorage.getItem("timeline") || "[]");
-  //   setTotal(timeline.length);
-    
-  //   // টাইপ অনুযায়ী ডেটা ফিল্টার এবং কাউন্ট
-  //   const counts = timeline.reduce((acc, curr) => {
-  //     acc[curr.type] = (acc[curr.type] || 0) + 1;
-  //     return acc;
-  //   }, {});
-
-  //   const chartData = Object.keys(counts).map(key => ({
-  //     name: key,
-  //     value: counts[key]
-  //   }));
-
-  //   setData(chartData);
-  // }, []);
-
+  
   // ফিগমা ডিজাইন অনুযায়ী কালার প্যালেট
   const COLORS = ["#166534", "#1e40af", "#6b21a8", "#9a3412"];
 
   return (
-    /* পুরো পেজটিকে gray background এবং full height দেওয়া হয়েছে */
+    /* পুরো পেজটিকে gray background এবং full height দেওয়া */
     <div className="min-h-screen bg-gray-50 py-12">
       
-      {/* Container class যা কন্টেন্টকে মাঝখানে রাখবে এবং max-width নিয়ন্ত্রণ করবে */}
+      {/* Container class যা কন্টেন্টকে মাঝখানে রাখবে এবং max-width নিয়ন্ত্রণ */}
       <div className="container mx-auto px-4 max-w-6xl">
         
         <div className="mb-10">
@@ -68,7 +45,7 @@ const StatsPage = () => {
         {data.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            {/* পাই চার্ট সেকশন (৮ কলাম জুড়ে থাকবে) */}
+            {/* পাই চার্ট সেকশন  */}
             <div className="lg:col-span-8 bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm h-[500px]">
               <div className="flex items-center justify-between mb-8">
                 <h3 className="text-lg font-bold flex items-center gap-2 text-gray-800">
@@ -103,7 +80,7 @@ const StatsPage = () => {
               </ResponsiveContainer>
             </div>
 
-            {/* ডান পাশের সামারি কার্ডস (৪ কলাম জুড়ে থাকবে) */}
+            {/* ডান পাশের সামারি কার্ডস */}
             <div className="lg:col-span-4 space-y-4">
               <div className="bg-green-800 text-white p-8 rounded-[32px] shadow-xl shadow-green-100">
                 <p className="text-green-200 text-sm font-medium uppercase tracking-wider">Total Interactions</p>

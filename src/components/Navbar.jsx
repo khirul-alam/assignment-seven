@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           
-          {/* ১. লোগো (সব ডিভাইসেই বামে থাকবে) */}
+          {/* ১. লোগো (সব বামে থাকবে) */}
           <div className="flex items-center gap-2">
             
             <span className="text-3xl font-bold text-gray-800 tracking-tight">
@@ -48,7 +48,7 @@ const Navbar = () => {
             })}
           </div>
 
-          {/* ৩. মোবাইল মেনু বাটন (শুধু মোবাইল ও ছোট ট্যাবলেটে দেখাবে) */}
+          {/* ৩. মোবাইল মেনু বাটন  */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}

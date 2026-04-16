@@ -2,7 +2,7 @@
 import { UserPlus, Users, CheckCircle, AlertCircle, MessageSquare } from "lucide-react";
 
 const Banner = () => {
-  // কার্ডগুলোর জন্য ডামি ডেটা (তুমি এগুলো প্রোফাইল লিস্ট থেকে ক্যালকুলেট করতে পারো)
+  // কার্ডগুলোর জন্য ডামি ডেটা
   const stats = [
     { label: "Total Friends", value: "10", icon: <Users size={20} />, color: "text-blue-600", bg: "bg-blue-50" },
     { label: "On Track", value: "3", icon: <CheckCircle size={20} />, color: "text-green-600", bg: "bg-green-50" },
@@ -28,7 +28,7 @@ const Banner = () => {
           Add a Friend
         </button>
 
-        {/* ৪টি সামারি কার্ড (Summary Cards) */}
+        {/*(Summary Cards) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 container mx-auto">
           {stats.map((stat, index) => (
             <div 

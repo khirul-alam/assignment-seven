@@ -180,7 +180,7 @@ const FriendDetails = () => {
             </button>
           </div>
 
-          {/* ৩. Quick Check-In Card (Interaction Buttons) */}
+          {/* ৩. Quick Check-In Card*/}
           <div className="bg-green-800 p-8 rounded-3xl text-white">
             <h3 className="text-xl font-bold mb-2">Quick Check-In</h3>
 
